@@ -7,7 +7,12 @@ function Task({text, status, isEditing, onToggleTaskStatus, onDeleteTask, onEdit
         <li className={liClass}>
 
             <div className="view">
-                <input className="toggle" type="checkbox" checked={status === 'completed'} onClick={onToggleTaskStatus}/>
+                <input 
+                    className="toggle" 
+                    type="checkbox" 
+                    checked={status === 'completed'} 
+                    onClick={onToggleTaskStatus}
+                />
                 <label>
                     <span className="description">{text}</span>
                     <span className="created">created 17 seconds ago</span>
@@ -15,7 +20,7 @@ function Task({text, status, isEditing, onToggleTaskStatus, onDeleteTask, onEdit
                 <button className="icon icon-edit" onClick={onEdit}></button>
                 <button className="icon icon-destroy" onClick={onDeleteTask}></button>
             </div>
-            {isEditing && <input type="text" defaultValue={text} className="edit" onKeyDown={onEnter}/>}
+            {isEditing && <input type="text" defaultValue={text} className="edit" onKeyDown={onEnter} autoFocus/>}
         </li>
     )
 }
