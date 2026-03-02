@@ -1,6 +1,6 @@
 import Task from './Task';
 
-function TaskList({tasks, onToggle, onDelete, onEdit, onKeyDown}) {
+function TaskList({tasks, onToggle, onDelete, onEdit, }) {
     
     return(
         <ul className="todo-list">
@@ -12,8 +12,7 @@ function TaskList({tasks, onToggle, onDelete, onEdit, onKeyDown}) {
                     isEditing={task.isEditing}
                     onToggleTaskStatus={()=> onToggle(task.id)}
                     onDeleteTask={()=> onDelete(task.id)}
-                    onEdit={()=> onEdit(task.id, task.text)}
-                    onEnter={(event) => onKeyDown(event, task.id)}
+                    onEdit={(event)=> onEdit(event, task.id)}  
                 />
             )}
         </ul>

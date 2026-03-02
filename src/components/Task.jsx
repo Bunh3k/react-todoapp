@@ -1,6 +1,6 @@
-function Task({text, status, isEditing, onToggleTaskStatus, onDeleteTask, onEdit, onEnter}) {
+function Task({text, status, isEditing, onToggleTaskStatus, onDeleteTask, onEdit, }) {
 
-    const liClass = isEditing ? "editing" : status;
+    const liClass =isEditing ? 'editing' : status;
 
     return(
 
@@ -20,7 +20,7 @@ function Task({text, status, isEditing, onToggleTaskStatus, onDeleteTask, onEdit
                 <button className="icon icon-edit" onClick={onEdit}></button>
                 <button className="icon icon-destroy" onClick={onDeleteTask}></button>
             </div>
-            {isEditing && <input type="text" defaultValue={text} className="edit" onKeyDown={onEnter} autoFocus/>}
+            {isEditing && <input type="text" defaultValue={text} className="edit" onKeyDown={onEdit} autoFocus/>}
         </li>
     )
 }
