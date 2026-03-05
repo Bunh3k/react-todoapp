@@ -5,9 +5,9 @@ import {useState} from 'react';
 
 function App() {
   const [tasks, setTasks] = useState([
-        {id: 1, text: "Completed task", status: "completed"},
-        {id: 2, text: "Editing task", status: "active"},
-        {id: 3, text: "Active task", status: "active"}
+        {id: 1, text: "Completed task", status: "completed", createdAt: new Date()},
+        {id: 2, text: "Editing task", status: "active", createdAt: new Date()},
+        {id: 3, text: "Active task", status: "active", createdAt: new Date()}
     ]);
 
   const [filter, setFilter] = useState('all');
@@ -17,9 +17,10 @@ function App() {
             id: Date.now(),
             text: text,
             status: 'active',
-            isEditing: false
+            isEditing: false,
+            createdAt: new Date()
         }
-        setTasks([...tasks, newTask]);
+        setTasks(prevTasks => [...prevTasks, newTask]);
     }
 
     const toggleTaskStatus = (id) => {

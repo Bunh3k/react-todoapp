@@ -1,4 +1,5 @@
 import TasksFilter from "./TasksFilter"
+import PropTypes from 'prop-types';
 
 function Footer({activeCount, filter, onChangeFilter, onClearCompleted}) {
     return(
@@ -19,5 +20,12 @@ function Footer({activeCount, filter, onChangeFilter, onClearCompleted}) {
         </footer>
     )
 }
+
+Footer.propTypes = {
+    activeCount: PropTypes.number,
+    filter: PropTypes.string,
+    onChangeFilter: PropTypes.func,
+    onClearCompleted: PropTypes.func
+};
 
 export default Footer;

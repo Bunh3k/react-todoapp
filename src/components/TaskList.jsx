@@ -1,4 +1,5 @@
 import Task from './Task';
+import PropTypes from 'prop-types';
 
 function TaskList({tasks, onToggle, onDelete, onEdit }) {
     
@@ -13,11 +14,20 @@ function TaskList({tasks, onToggle, onDelete, onEdit }) {
                     onToggleTaskStatus={()=> onToggle(task.id)}
                     onDeleteTask={()=> onDelete(task.id)}
                     onEdit={(event)=> onEdit(event, task.id)}
+                    createdAt={task.createdAt}
                     
                 />
             )}
         </ul>
     )
 }
+
+TaskList.propTypes = {
+    tasks: PropTypes.arrayOf(PropTypes.object).isRequired,
+    onToggle: PropTypes.func.isRequired,
+    onDelete: PropTypes.func.isRequired,
+    onEdit: PropTypes.func.isRequired
+};
+
 
 export default TaskList;
