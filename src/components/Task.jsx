@@ -1,6 +1,17 @@
-function Task({text, status, isEditing, onToggleTaskStatus, onDeleteTask, onEdit, }) {
+import { useState } from "react";
 
-    const liClass =isEditing ? 'editing' : status;
+function Task({text, status, onToggleTaskStatus, onDeleteTask, onEdit }) {
+
+    const [editing, setEditing] = useState(false);
+
+    const handleEnter = (event) => {
+        if(event.key === 'Enter'){
+            onEdit(event);
+            setEditing(false);
+        }
+    }
+
+    const liClass = editing ? "editing" : status;
 
     return(
 
@@ -11,16 +22,24 @@ function Task({text, status, isEditing, onToggleTaskStatus, onDeleteTask, onEdit
                     className="toggle" 
                     type="checkbox" 
                     checked={status === 'completed'} 
-                    onClick={onToggleTaskStatus}
+                    onChange={onToggleTaskStatus}
                 />
                 <label>
                     <span className="description">{text}</span>
                     <span className="created">created 17 seconds ago</span>
                 </label>
-                <button className="icon icon-edit" onClick={onEdit}></button>
+                <button className="icon icon-edit" onClick={() => setEditing(true)}></button>
                 <button className="icon icon-destroy" onClick={onDeleteTask}></button>
             </div>
-            {isEditing && <input type="text" defaultValue={text} className="edit" onKeyDown={onEdit} autoFocus/>}
+            {editing && 
+                <input 
+                    type="text" 
+                    defaultValue={text} 
+                    className="edit" 
+                    onKeyDown={handleEnter} 
+                    autoFocus
+                />
+            }
         </li>
     )
 }

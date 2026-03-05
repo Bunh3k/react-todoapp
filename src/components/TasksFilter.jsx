@@ -1,14 +1,29 @@
-function TasksFilter() {
+function TasksFilter({filter, onChangeFilter}) {
     return(
         <ul className="filters">
             <li>
-                <button className="selected">All</button>
+                <button 
+                    className={filter === 'all' ? 'selected' : ''} 
+                    onClick={() => onChangeFilter('all')}
+                >
+                    All
+                </button>
             </li>
             <li>
-                <button className="">Active</button>
+                <button 
+                    className={filter === 'active' ? 'selected' : ''} 
+                    onClick={() => onChangeFilter('active')}
+                >
+                    Active
+                </button>
             </li>
             <li>
-                <button className="">Completed</button>
+                <button 
+                    className={filter === 'completed' ? 'selected' : ''} 
+                    onClick={() => onChangeFilter('completed')}
+                >
+                    Completed
+                </button>
             </li>
         </ul>
     )
